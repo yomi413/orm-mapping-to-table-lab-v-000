@@ -37,7 +37,10 @@ class Student
     @id = DB[:conn].execute("SELECT id FROM students")[0][0]
   end
 
-  def self.create
+  def self.create(name:, grade:)
+    student = Students.new(name, grade)
+    student.save
+    student
   end
 
   # Remember, you can access your database connection anywhere in this class
